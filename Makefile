@@ -9,7 +9,7 @@ MKDIR = mkdir -p
 DESTDIR = ./bin
 all: $(DESTDIR)/prog
 
-$(DESTDIR)/prog: $(TMPDIR)/main.o $(TMPDIR)/author.o $(TMPDIR)/article.o
+$(DESTDIR)/prog: $(TMPDIR)/main.o $(TMPDIR)/author.o $(TMPDIR)/article.o $(TMPDIR)/imatrix.o
 	$(MKDIR) $(DESTDIR)
 	$(LD) $(LDFLAGS) -o $@ $^
 
