@@ -26,7 +26,7 @@ void Article :: setTitle (std::string title)
     a_title = title;
 }
 
-const vector<Author>& Article :: getAuthors (void) const
+const vector<Author>& Article :: authors (void) const
 {
     return author_list;
 }
@@ -39,4 +39,16 @@ vector<Author>& Article :: authors (void)
 void Article :: setAuthors (const vector<Author>& authList)
 {
     author_list = authList;
+}
+
+ostream& operator<< (ostream& out, const Article& AR)
+{
+    out << AR.a_title << std::endl;
+    int n = AR.author_list.size ();
+    for (int i=0; i<n; i++)
+    {
+        Author a = AR.author_list[i];
+        out << "    " << a << std::endl;
+    }
+    return out;
 }

@@ -3,10 +3,12 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 #include "author.h"
 
 using std::vector;
+using std::ostream;
 
 class Article
 {
@@ -18,9 +20,11 @@ public:
     std::string getTitle (void) const;
     void setTitle (std::string title);
 
-    const vector<Author>& getAuthors (void) const;
+    const vector<Author>& authors (void) const;
     vector<Author>& authors (void);
     void setAuthors (const vector<Author>& authList);
+
+    friend ostream& operator<< (ostream& out, const Article& AR);
 
 private:
     std::string a_title;

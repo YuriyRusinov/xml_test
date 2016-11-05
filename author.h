@@ -2,8 +2,10 @@
 #define _Author_H
 
 #include <string>
+#include <iostream>
 
 using std::string;
+using std::ostream;
 
 class Author
 {
@@ -18,6 +20,11 @@ public:
 
     string getInitials (void) const;
     void setInitials (const string& initials);
+
+    friend ostream& operator<< (ostream& out, const Author& A);
+    bool operator< (const Author& A) const;
+    bool operator== (const Author& A) const;
+    bool operator!= (const Author& A) const;
 
 private:
     string LastName;

@@ -4,7 +4,7 @@
 class IMatrix
 {
 public:
-    IMatrix (int nRow, int nCol, int* vals=0);
+    IMatrix (int nRow, int nCol, int value=0);
     IMatrix (const IMatrix& IM);
     virtual ~IMatrix (void);
 
@@ -21,10 +21,11 @@ private:
     int * values;
 };
 
+/*
 class SymmIMatrix : public IMatrix
 {
 public:
-    SymmIMatrix (int nRow, int * vals=0);
+    SymmIMatrix (int nRow, int value=0);
     SymmIMatrix (const SymmIMatrix& SIM);
     virtual ~SymmIMatrix (void);
 
@@ -32,5 +33,5 @@ public:
     virtual int& operator() (int i, int j);
 
 };
-
+*/
 #endif
