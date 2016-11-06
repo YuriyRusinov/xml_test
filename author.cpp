@@ -1,4 +1,7 @@
+#include <iomanip>
 #include "author.h"
+
+using std::setw;
 
 Author :: Author (const string& lastname, const string& forename, const string& initials)
     : LastName (lastname),
@@ -59,6 +62,6 @@ bool Author :: operator!= (const Author& A) const
 
 ostream& operator<< (ostream& out, const Author& A)
 {
-    out << A.LastName << " " << A.ForeName << " " << A.Initials;
+    out << setw (6) << A.LastName << "," << std::endl << setw (6) << A.ForeName ;//<< std::endl;// << A.Initials;
     return out;
 }

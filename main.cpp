@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+#include <iomanip>
 
 #include <tinyxml2.h>
 
@@ -15,6 +16,7 @@ using std::cout;
 using std::cerr;
 using std::endl;
 using std::ifstream;
+using std::setw;
 
 using tinyxml2::XMLDocument;
 using tinyxml2::Whitespace;
@@ -43,7 +45,7 @@ int main (int argc, char* argv[])
         return ier;
     }
     XMLElement * rootElem = docXml->RootElement ();
-    cout << rootElem->Name () << endl;
+    //cout << rootElem->Name () << endl;
     XMLElement * articleElem = rootElem->FirstChildElement ();
     vector<Article> articles;
     vector<Author> AllAuthors;
@@ -125,13 +127,7 @@ int main (int argc, char* argv[])
         }
         a.setAuthors (authors);
         //cout << authElement->Name () << endl;
-/*        while (elem && !elem->NoChildren ())
-        {
-            cout << elem->Name () << endl;
-            elem = elem->NextSiblingElement ();
-        }
-*/
-        cout << a << std::endl;
+        //cout << a << std::endl;
         articles.push_back (a);
         articleElem = articleElem->NextSiblingElement ();
     }
@@ -161,10 +157,23 @@ int main (int argc, char* argv[])
             prev_pos.push_back (numAuth);
         }
     }
+    cout << "     ";
     for (int i=0; i<nAuth; i++)
     {
+        cout << setw (6) << AllAuthors[i].getLastName () << ", ";
+    }
+    cout << endl;
+    cout << "     ";
+    for (int i=0; i<nAuth; i++)
+    {
+        cout << setw (6) << AllAuthors[i].getForeName () << ", ";
+    }
+    cout << endl;
+    for (int i=0; i<nAuth; i++)
+    {
+        cout << setw (6) << AllAuthors[i] << ' ';
         for (int j=0; j<nAuth; j++)
-            cout << authMatr (i, j) << ' ';
+            cout << setw (6) << authMatr (i, j) << "    ";
         cout << endl;
     }
     return 0;
